@@ -8,6 +8,10 @@ use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\TableInfoController;
 use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\TableStructureController;
 use Illuminate\Support\Facades\Route;
 
+if (! app()->environment('local')) {
+    return;
+}
+
 $baseUrl = config('database-gui.base_path', 'db');
 
 Route::name("$baseUrl.")->prefix($baseUrl)->group(function () {
