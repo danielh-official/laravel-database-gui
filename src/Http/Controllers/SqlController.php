@@ -24,6 +24,8 @@ class SqlController
 
         $query = $request->input('query');
 
+        $start = microtime(true);
+
         try {
             $results = \DB::select($query);
         } catch (\Exception $e) {
@@ -33,7 +35,11 @@ class SqlController
             return view('database-gui::sql', compact('tables', 'query', 'error'));
         }
 
+        $end = microtime(true);
+
+        $timeToResult = ($end - $start) * 1000;
+
         // @phpstan-ignore-next-line
-        return view('database-gui::sql', compact('tables', 'query', 'results'));
+        return view('database-gui::sql', compact('tables', 'query', 'results', 'timeToResult'));
     }
 }

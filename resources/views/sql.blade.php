@@ -25,8 +25,15 @@
                 </form>
             </div>
         @endif
-        <div class="w-full overflow-x-auto">
+        <div class="w-full overflow-x-auto flex flex-col gap-4">
             @if (isset($results) && count($results) > 0)
+                <div>
+                    <h2 class="text-lg font-semibold">Query Stats</h2>
+                    <ul class="list-disc list-inside">
+                        <li>Count: {{ count($results) }}</li>
+                        <li>Time To Result: {{ $timeToResult }} ms</li>
+                    </ul>
+                </div>
                 <table class="table-auto border-collapse border border-gray-300">
                     <thead>
                         <tr>
