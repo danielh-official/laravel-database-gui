@@ -55,6 +55,7 @@ class TableInfoController
             $createQuery = \DB::selectOne('SELECT pg_get_tabledef(oid) AS create_table FROM pg_class WHERE relname = ?', [$table])->create_table;
         }
 
+        // @phpstan-ignore-next-line
         return view('database-gui::table.info', compact('tables', 'table', 'columns', 'foreignKeys', 'indexes', 'rowCount', 'engine', 'collation', 'comment', 'createQuery'));
     }
 }

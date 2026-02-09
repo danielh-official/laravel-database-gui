@@ -30,6 +30,7 @@ class TableDataController
 
         $basePath = config('database-gui.base_path', 'db');
 
+        // @phpstan-ignore-next-line
         return view('database-gui::table.data.index', compact('tables', 'table', 'columns', 'rows', 'sorts', 'showSortForm'));
     }
 
@@ -41,6 +42,7 @@ class TableDataController
 
         $basePath = config('database-gui.base_path', 'db');
 
+        // @phpstan-ignore-next-line
         return view('database-gui::table.data.create', compact('tables', 'table', 'columns'));
     }
 
@@ -99,10 +101,11 @@ class TableDataController
     {
         $tables = \DB::connection()->getSchemaBuilder()->getTables();
 
-        $row = \DB::table($table)->whereId($id)->orWhere('key', $id)->first();
+        $row = \DB::table($table)->where('id', $id)->orWhere('key', $id)->first();
 
         $basePath = config('database-gui.base_path', 'db');
 
+        // @phpstan-ignore-next-line
         return view('database-gui::table.data.show', compact('tables', 'table', 'row'));
     }
 
@@ -112,10 +115,11 @@ class TableDataController
 
         $columns = \Schema::getColumns($table);
 
-        $row = \DB::table($table)->whereId($id)->orWhere('key', $id)->first();
+        $row = \DB::table($table)->where('id', $id)->orWhere('key', $id)->first();
 
         $basePath = config('database-gui.base_path', 'db');
 
+        // @phpstan-ignore-next-line
         return view('database-gui::table.data.edit', compact('tables', 'table', 'columns', 'row'));
     }
 

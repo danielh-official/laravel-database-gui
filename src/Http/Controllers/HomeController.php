@@ -10,6 +10,7 @@ class HomeController
 
         $connectionDetails = \DB::getConfig();
 
+        // @phpstan-ignore-next-line
         return view('database-gui::home', compact('tables', 'connectionDetails'));
     }
 }

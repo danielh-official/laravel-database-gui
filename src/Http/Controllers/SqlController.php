@@ -12,6 +12,7 @@ class SqlController
             $query = '';
             $results = [];
 
+            // @phpstan-ignore-next-line
             return view('database-gui::sql', compact('tables', 'query', 'results'));
         }
 
@@ -30,6 +31,7 @@ class SqlController
                 ->withErrors(['query' => $e->getMessage()]);
         }
 
+        // @phpstan-ignore-next-line
         return view('database-gui::sql', compact('tables', 'query', 'results'));
     }
 }

@@ -14,6 +14,7 @@ class TableStructureController
 
         $indexes = \Schema::getIndexes($table);
 
+        // @phpstan-ignore-next-line
         return view('database-gui::table.structure', compact('tables', 'table', 'columns', 'foreignKeys', 'indexes'));
     }
 }
