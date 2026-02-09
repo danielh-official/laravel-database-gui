@@ -1,4 +1,6 @@
-# An in-app GUI for performing local database operations. Like TablePlus, but in your app.
+# Laravel Database GUI
+
+An in-app GUI for performing local database operations in your Laravel application. Like TablePlus, but in your app.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/danielh-official/laravel-database-gui.svg?style=flat-square)](https://packagist.org/packages/danielh-official/laravel-database-gui)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/danielh-official/laravel-database-gui/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/danielh-official/laravel-database-gui/actions?query=workflow%3Arun-tests+branch%3Amain)
@@ -20,7 +22,7 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 You can install the package via composer:
 
 ```bash
-composer require danielh-official/laravel-database-gui
+composer require --dev danielh-official/laravel-database-gui
 ```
 
 You can publish the config file with:
@@ -33,6 +35,10 @@ This is the contents of the published config file:
 
 ```php
 return [
+    'auto_register' => true,
+    'route_macro' => 'db',
+    'base_path' => 'db',
+    'app_path_prefix' => '/',
 ];
 ```
 
@@ -48,6 +54,8 @@ php artisan vendor:publish --tag="database-gui-views"
 And style them however you like.
 
 ## Usage
+
+Routes are auto-registered in the local environment by default.
 
 ```php
 $laravelDatabaseGui = new DanielHOfficial\LaravelDatabaseGui();
