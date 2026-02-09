@@ -68,6 +68,11 @@ test('sql results export', function () {
     $result = (new ExportSqlResultsController)->__invoke($request);
 
     expect($result)->toBeInstanceOf(BinaryFileResponse::class);
+
+    $exportPath = $result->getFile()->getPathname();
+    if (file_exists($exportPath)) {
+        unlink($exportPath);
+    }
 });
 
 test('table data index', function () {
