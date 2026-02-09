@@ -3,7 +3,7 @@
 
 @php
     $basePath = config('database-gui.base_path', 'db');
-    $appRoute = config('database-gui.app_path_prefix', '/');
+    $appRoute = config('database-gui.app_path', '/');
     $homeRoute = route("$basePath.home");
     $sqlRoute = route("$basePath.sql");
 @endphp
