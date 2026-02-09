@@ -94,6 +94,11 @@ class TableDataController
 
         $basePath = config('database-gui.base_path', 'db');
 
+        // Check if route exists
+        if (!\Route::has("$basePath.table.data.index")) {
+            return redirect()->back();
+        }
+
         return redirect()->route("$basePath.table.data.index", ['table' => $table]);
     }
 
@@ -138,7 +143,6 @@ class TableDataController
             $referencedTable = $foreignKey['foreign_table'];
             $referencedColumn = $foreignKey['foreign_columns'][0];
             $column = $foreignKey['columns'][0];
-            $value = $data[$column] ?? null;
 
             if (isset($validationRules[$column])) {
                 $validationRules[$column][] = ["exists:{$referencedTable},{$referencedColumn}"];
@@ -176,6 +180,11 @@ class TableDataController
         \DB::table($table)->where('id', $id)->orWhere('key', $id)->update($data);
 
         $basePath = config('database-gui.base_path', 'db');
+
+        // Check if route exists
+        if (!\Route::has("$basePath.table.data.index")) {
+            return redirect()->back();
+        }
 
         return redirect()->route("$basePath.table.data.show", ['table' => $table, 'id' => $id]);
     }
