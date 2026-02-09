@@ -7,7 +7,7 @@
 
 An in-app GUI for performing local database operations in your Laravel application. Like TablePlus, but in your app.
 
-![](./docs/screenshots/sample.png)
+![](./screenshots/sample.png)
 
 ## Installation
 
