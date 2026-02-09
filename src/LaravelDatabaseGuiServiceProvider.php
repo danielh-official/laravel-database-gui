@@ -2,7 +2,13 @@
 
 namespace DanielHOfficial\LaravelDatabaseGui;
 
-use DanielHOfficial\LaravelDatabaseGui\Commands\LaravelDatabaseGuiCommand;
+use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\ExportSqlResultsController;
+use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\HomeController;
+use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\SqlController;
+use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\TableDataController;
+use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\TableInfoController;
+use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\TableStructureController;
+use Illuminate\Support\Facades\Route;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -18,8 +24,42 @@ class LaravelDatabaseGuiServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-database-gui')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel_database_gui_table')
-            ->hasCommand(LaravelDatabaseGuiCommand::class);
+            ->hasViews();
+    }
+
+    public function packageRegistered()
+    {
+        $macro = config('laravel-database-gui.macro', 'db');
+        $baseUrl = config('laravel-database-gui.base_path', 'db');
+
+        Route::macro($macro, function () use ($baseUrl) {
+            Route::name("$baseUrl.")->prefix($baseUrl)->group(function () {
+                Route::get('/', HomeController::class)->name('home');
+
+                Route::get('sql', SqlController::class)->name('sql');
+
+                Route::post('sql/results/export', ExportSqlResultsController::class)->name('sql.results.export');
+
+                Route::name('table.')->prefix('/table/{table}')->group(function () {
+                    Route::resource('data', TableDataController::class)->parameters([
+                        'data' => 'id',
+                    ]);
+
+                    Route::get('/structure', TableStructureController::class)->name('structure');
+
+                    Route::get('/info', TableInfoController::class)->name('info');
+                });
+            });
+
+        });
+    }
+
+    public function register()
+    {
+        parent::register();
+
+        if (file_exists($file = __DIR__.'/helpers.php')) {
+            require_once $file;
+        }
     }
 }
