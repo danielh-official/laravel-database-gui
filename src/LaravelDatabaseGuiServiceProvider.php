@@ -2,7 +2,6 @@
 
 namespace DanielHOfficial\LaravelDatabaseGui;
 
-use Illuminate\Support\Facades\Route;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -18,6 +17,7 @@ class LaravelDatabaseGuiServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-database-gui')
             ->hasConfigFile()
+            ->hasRoute('database-gui')
             ->hasViews();
     }
 
@@ -27,17 +27,7 @@ class LaravelDatabaseGuiServiceProvider extends PackageServiceProvider
             return;
         }
 
-        if (config('database-gui.auto_register', true)) {
-            $this->loadRoutesFrom(__DIR__.'/../routes/database-gui.php');
-        }
-
-        $macro = config('database-gui.route_macro');
-
-        if (is_string($macro) && $macro !== '') {
-            Route::macro($macro, function () {
-                require __DIR__.'/../routes/database-gui.php';
-            });
-        }
+        $this->loadRoutesFrom(__DIR__.'/../routes/database-gui.php');
     }
 
     public function register()
