@@ -32,10 +32,9 @@ return [
 ];
 ```
 
-<b>Note</b>: This project uses Tailwind for styling. You have the following options:
+<b>Note</b>: This project uses Tailwind for styling via the CDN by default.
 
-- Include Tailwind in your project if you haven't already.
-- Optionally, you can publish the views using
+You can publish the views, using:
 
 ```bash
 php artisan vendor:publish --tag="database-gui-views"
