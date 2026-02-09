@@ -9,10 +9,8 @@
             <form action="{{ route("$basePath.sql") }}" method="GET">
                 <textarea name="query" rows="2" class="w-full p-2 border border-gray-300 rounded"
                     placeholder="Enter your SQL query here...">{{ old('query') ?? $query }}</textarea>
-                @isset($errors)
-                    @error('query')
-                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                    @enderror
+                @isset($error)
+                    <p class="text-red-500 text-sm mt-1">{{ $error }}</p>
                 @endisset
                 <button type="submit" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Execute</button>
             </form>

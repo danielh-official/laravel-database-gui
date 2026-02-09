@@ -27,8 +27,9 @@ class SqlController
         try {
             $results = \DB::select($query);
         } catch (\Exception $e) {
-            return redirect()->back()
-                ->withErrors(['query' => $e->getMessage()]);
+            $error = $e->getMessage();
+            // @phpstan-ignore-next-line
+            return view('database-gui::sql', compact('tables', 'query', 'error'));
         }
 
         // @phpstan-ignore-next-line
