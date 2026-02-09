@@ -29,8 +29,8 @@ class LaravelDatabaseGuiServiceProvider extends PackageServiceProvider
 
     public function packageRegistered()
     {
-        $macro = config('laravel-database-gui.macro', 'db');
-        $baseUrl = config('laravel-database-gui.base_path', 'db');
+        $macro = config('database-gui.macro', 'db');
+        $baseUrl = config('database-gui.base_path', 'db');
 
         Route::macro($macro, function () use ($baseUrl) {
             Route::name("$baseUrl.")->prefix($baseUrl)->group(function () {

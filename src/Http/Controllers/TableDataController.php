@@ -28,7 +28,7 @@ class TableDataController
 
         $rows = $query->paginate(15, ['*'], 'page', $currentPage)->withQueryString();
 
-        $basePath = config('laravel-database-gui.base_path', 'db');
+        $basePath = config('database-gui.base_path', 'db');
 
         return view('database-gui::table.data.index', compact('tables', 'table', 'columns', 'rows', 'sorts', 'showSortForm'));
     }
@@ -39,7 +39,7 @@ class TableDataController
 
         $columns = \Schema::getColumns($table);
 
-        $basePath = config('laravel-database-gui.base_path', 'db');
+        $basePath = config('database-gui.base_path', 'db');
 
         return view('database-gui::table.data.create', compact('tables', 'table', 'columns'));
     }
@@ -90,7 +90,7 @@ class TableDataController
 
         \DB::table($table)->insert($data);
 
-        $basePath = config('laravel-database-gui.base_path', 'db');
+        $basePath = config('database-gui.base_path', 'db');
 
         return redirect()->route("$basePath.table.data.index", ['table' => $table]);
     }
@@ -101,7 +101,7 @@ class TableDataController
 
         $row = \DB::table($table)->whereId($id)->orWhere('key', $id)->first();
 
-        $basePath = config('laravel-database-gui.base_path', 'db');
+        $basePath = config('database-gui.base_path', 'db');
 
         return view('database-gui::table.data.show', compact('tables', 'table', 'row'));
     }
@@ -114,7 +114,7 @@ class TableDataController
 
         $row = \DB::table($table)->whereId($id)->orWhere('key', $id)->first();
 
-        $basePath = config('laravel-database-gui.base_path', 'db');
+        $basePath = config('database-gui.base_path', 'db');
 
         return view('database-gui::table.data.edit', compact('tables', 'table', 'columns', 'row'));
     }
@@ -171,7 +171,7 @@ class TableDataController
 
         \DB::table($table)->where('id', $id)->orWhere('key', $id)->update($data);
 
-        $basePath = config('laravel-database-gui.base_path', 'db');
+        $basePath = config('database-gui.base_path', 'db');
 
         return redirect()->route("$basePath.table.data.show", ['table' => $table, 'id' => $id]);
     }

@@ -1,5 +1,5 @@
 @php
-    $basePath = config('laravel-database-gui.base_path', 'db');
+    $basePath = config('database-gui.base_path', 'db');
     $sqlRoute = route("$basePath.sql");
 @endphp
 

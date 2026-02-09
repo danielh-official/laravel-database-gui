@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 @php
-    $basePath = config('laravel-database-gui.base_path', 'db');
+    $basePath = config('database-gui.base_path', 'db');
     $homeRoute = route("$basePath.home");
     $sqlRoute = route("$basePath.sql");
 @endphp

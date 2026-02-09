@@ -1,5 +1,5 @@
 @php
-    $basePath = config('laravel-database-gui.base_path', 'db');
+    $basePath = config('database-gui.base_path', 'db');
 @endphp
 
 <x-database-gui::layout.main :tables="$tables" :selectedTable="$table" title="Insert | {{ $table }} Table">
