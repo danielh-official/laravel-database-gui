@@ -95,7 +95,7 @@ class TableDataController
         $basePath = config('database-gui.base_path', 'db');
 
         // Check if route exists
-        if (!\Route::has("$basePath.table.data.index")) {
+        if (! \Route::has("$basePath.table.data.index")) {
             return redirect()->back();
         }
 
@@ -182,7 +182,7 @@ class TableDataController
         $basePath = config('database-gui.base_path', 'db');
 
         // Check if route exists
-        if (!\Route::has("$basePath.table.data.index")) {
+        if (! \Route::has("$basePath.table.data.index")) {
             return redirect()->back();
         }
 
