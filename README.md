@@ -23,17 +23,10 @@ You can install the package via composer:
 composer require danielh-official/laravel-database-gui
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="laravel-database-gui-migrations"
-php artisan migrate
-```
-
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-database-gui-config"
+php artisan vendor:publish --tag="database-gui-config"
 ```
 
 This is the contents of the published config file:
@@ -43,11 +36,16 @@ return [
 ];
 ```
 
-Optionally, you can publish the views using
+<b>Note</b>: This project uses Tailwind for styling. You have the following options:
+
+- Include Tailwind in your project if you haven't already.
+- Optionally, you can publish the views using
 
 ```bash
-php artisan vendor:publish --tag="laravel-database-gui-views"
+php artisan vendor:publish --tag="database-gui-views"
 ```
+
+And style them however you like.
 
 ## Usage
 
