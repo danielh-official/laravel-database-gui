@@ -2,9 +2,9 @@
 
 namespace DanielHOfficial\LaravelDatabaseGui\Tests;
 
+use DanielHOfficial\LaravelDatabaseGui\LaravelDatabaseGuiServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use DanielHOfficial\LaravelDatabaseGui\LaravelDatabaseGuiServiceProvider;
 
 class TestCase extends Orchestra
 {

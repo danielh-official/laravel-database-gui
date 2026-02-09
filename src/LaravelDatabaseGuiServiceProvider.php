@@ -2,9 +2,9 @@
 
 namespace DanielHOfficial\LaravelDatabaseGui;
 
+use DanielHOfficial\LaravelDatabaseGui\Commands\LaravelDatabaseGuiCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use DanielHOfficial\LaravelDatabaseGui\Commands\LaravelDatabaseGuiCommand;
 
 class LaravelDatabaseGuiServiceProvider extends PackageServiceProvider
 {
