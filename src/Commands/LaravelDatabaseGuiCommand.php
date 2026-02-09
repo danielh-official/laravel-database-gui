@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace DanielHOfficial\LaravelDatabaseGui\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelDatabaseGuiCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-database-gui';
 
     public $description = 'My command';
 
