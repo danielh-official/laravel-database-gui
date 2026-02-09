@@ -2,7 +2,7 @@
 
 use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\ExportSqlResultsController;
 use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\HomeController;
-use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\SqlController;
+use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\SqlSelectController;
 use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\TableDataController;
 use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\TableInfoController;
 use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\TableStructureController;
@@ -17,7 +17,9 @@ $baseUrl = config('database-gui.base_path', 'db');
 Route::name("$baseUrl.")->prefix($baseUrl)->group(function () {
     Route::get('/', HomeController::class)->name('home');
 
-    Route::get('sql', SqlController::class)->name('sql');
+    Route::get('sql', SqlSelectController::class)->name('sql');
+
+    Route::get('sql/select', SqlSelectController::class)->name('sql.select');
 
     Route::post('sql/results/export', ExportSqlResultsController::class)->name('sql.results.export');
 

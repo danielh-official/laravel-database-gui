@@ -37,7 +37,7 @@
                 <a href="{{ $sqlRoute }}" @class([
                     'hover:text-blue-600 dark:text-gray-400',
                     'font-semibold text-blue-500' => request()->routeIs("$basePath.sql"),
-                ])>SQL</a>
+                ])>SQL Select</a>
             </div>
             <hr class="my-4 border-white" />
             <div class="flex flex-col gap-1">

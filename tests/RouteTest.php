@@ -2,7 +2,7 @@
 
 use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\ExportSqlResultsController;
 use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\HomeController;
-use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\SqlController;
+use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\SqlSelectController;
 use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\TableDataController;
 use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\TableInfoController;
 use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\TableStructureController;
@@ -39,9 +39,9 @@ test('home', function () {
 test('sql', function () {
     $request = new Request;
 
-    $result = (new SqlController)->__invoke($request);
+    $result = (new SqlSelectController)->__invoke($request);
 
-    expect($result->name())->toBe('database-gui::sql');
+    expect($result->name())->toBe('database-gui::sql.select');
     expect($result->getData())
         ->toHaveKey('tables')
         ->toHaveKey('query')
@@ -54,9 +54,9 @@ describe('sql', function () {
             'query' => 'invalid query',
         ]);
 
-        $result = (new SqlController)->__invoke($request);
+        $result = (new SqlSelectController)->__invoke($request);
 
-        expect($result->name())->toBe('database-gui::sql');
+        expect($result->name())->toBe('database-gui::sql.select');
         expect($result->getData())
             ->toHaveKey('tables')
             ->toHaveKey('query')

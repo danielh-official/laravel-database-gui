@@ -3,12 +3,12 @@
     $sqlRoute = route("$basePath.sql");
 @endphp
 
-<x-database-gui::layout.main :tables="$tables" title="SQL">
+<x-database-gui::layout.main :tables="$tables" title="SQL Select">
     <div class="flex flex-col gap-4">
         <div class="p-4 text-center">
             <form action="{{ route("$basePath.sql") }}" method="GET">
                 <textarea name="query" rows="2" class="w-full p-2 border border-gray-300 rounded"
-                    placeholder="Enter your SQL query here...">{{ old('query') ?? $query }}</textarea>
+                    placeholder="Enter your SQL SELECT query here...">{{ old('query') ?? $query }}</textarea>
                 @isset($error)
                     <p class="text-red-500 text-sm mt-1">{{ $error }}</p>
                 @endisset
