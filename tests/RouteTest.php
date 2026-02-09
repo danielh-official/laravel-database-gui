@@ -49,14 +49,18 @@ test('sql', function () {
 });
 
 describe('sql', function () {
-    it('redirects back if query is not empty and not valid', function () {
+    it('shows view with error if query is not empty and not valid', function () {
         $request = new Request([
             'query' => 'invalid query',
         ]);
 
         $result = (new SqlController)->__invoke($request);
 
-        expect($result->isRedirect())->toBeTrue();
+        expect($result->name())->toBe('database-gui::sql');
+        expect($result->getData())
+            ->toHaveKey('tables')
+            ->toHaveKey('query')
+            ->toHaveKey('error');
     });
 });
 
