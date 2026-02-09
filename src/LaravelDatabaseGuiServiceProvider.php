@@ -2,12 +2,6 @@
 
 namespace DanielHOfficial\LaravelDatabaseGui;
 
-use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\ExportSqlResultsController;
-use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\HomeController;
-use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\SqlController;
-use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\TableDataController;
-use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\TableInfoController;
-use DanielHOfficial\LaravelDatabaseGui\Http\Controllers\TableStructureController;
 use Illuminate\Support\Facades\Route;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -27,31 +21,23 @@ class LaravelDatabaseGuiServiceProvider extends PackageServiceProvider
             ->hasViews();
     }
 
-    public function packageRegistered()
+    public function packageBooted(): void
     {
-        $macro = config('database-gui.macro', 'db');
-        $baseUrl = config('database-gui.base_path', 'db');
+        if (! app()->environment('local')) {
+            return;
+        }
 
-        Route::macro($macro, function () use ($baseUrl) {
-            Route::name("$baseUrl.")->prefix($baseUrl)->group(function () {
-                Route::get('/', HomeController::class)->name('home');
+        if (config('database-gui.auto_register', true)) {
+            $this->loadRoutesFrom(__DIR__.'/../routes/database-gui.php');
+        }
 
-                Route::get('sql', SqlController::class)->name('sql');
+        $macro = config('database-gui.route_macro');
 
-                Route::post('sql/results/export', ExportSqlResultsController::class)->name('sql.results.export');
-
-                Route::name('table.')->prefix('/table/{table}')->group(function () {
-                    Route::resource('data', TableDataController::class)->parameters([
-                        'data' => 'id',
-                    ]);
-
-                    Route::get('/structure', TableStructureController::class)->name('structure');
-
-                    Route::get('/info', TableInfoController::class)->name('info');
-                });
+        if (is_string($macro) && $macro !== '') {
+            Route::macro($macro, function () {
+                require __DIR__.'/../routes/database-gui.php';
             });
-
-        });
+        }
     }
 
     public function register()
