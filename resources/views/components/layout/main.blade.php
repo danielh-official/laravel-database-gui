@@ -19,14 +19,12 @@
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
     <!-- Styles / Scripts -->
-    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @endif
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body
     class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] p-6 lg:p-8 lg:justify-center transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0 gap-4">
-    <div class="flex p-6 lg:p-8 items-center lg:justify-center  w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0 gap-4 lg:flex-row flex-col">
+    <div class="flex p-6 lg:p-8 sm:items-center sm:justify-center  w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0 gap-4 sm:flex-row flex-col">
         {{-- List of database tables for current connection --}}
         <div class="flex flex-col sticky top-6 self-start h-full border-r border-[#e3e3e0] dark:border-[#3E3E3A] pr-4">
             <a href="{{ $appRoute }}" class="hover:text-blue-600 hover:underline dark:text-gray-400">{{ '<-' }}</a>
