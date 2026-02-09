@@ -24,7 +24,15 @@
 
 <body
     class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] p-6 lg:p-8 lg:justify-center transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0 gap-4">
-    <div class="flex p-6 lg:p-8 sm:items-center sm:justify-center  w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0 gap-4 sm:flex-row flex-col">
+    <header>
+        <div class="text-right text-xs">
+            Like this package? Consider <a class="text-blue-500 hover:text-blue-600 hover:underline"
+                href="https://github.com/danielh-official/laravel-database-gui" target="_blank"
+                rel="noopener noreferrer">giving the repo a star</a>.
+        </div>
+    </header>
+    <div
+        class="flex p-6 lg:p-8 sm:items-center sm:justify-center  w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0 gap-4 sm:flex-row flex-col">
         {{-- List of database tables for current connection --}}
         <div class="flex flex-col sticky top-6 self-start h-full border-r border-[#e3e3e0] dark:border-[#3E3E3A] pr-4">
             <a href="{{ $appRoute }}" class="hover:text-blue-600 hover:underline dark:text-gray-400">Return</a>
@@ -60,7 +68,7 @@
             </div>
         </div>
         <main
-            class="flex flex-col text-[13px] leading-5 flex-1 p-6 pb-12 lg:p-10 dark:text-[#EDEDEC] m-3 overflow-y-auto overflow-x-auto">
+            class="flex flex-col text-[13px] leading-5 flex-1 p-6 pb-12 lg:p-10 dark:text-[#EDEDEC] m-3 overflow-y-auto overflow-x-auto gap-6">
             {{ $slot }}
         </main>
     </div>
