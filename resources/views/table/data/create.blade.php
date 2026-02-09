@@ -23,9 +23,11 @@
                                 id="{{ $column['name'] }}" @required(!($column['nullable'] ?? false))
                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:focus:border-indigo-500 dark:focus:ring-indigo-500"
                                 autocomplete="off" value="{{ old($column['name']) }}" />
-                            @error($column['name'])
-                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
+                            @isset($errors)
+                                @error($column['name'])
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                            @endisset
                         </div>
                     @endif
                 @endforeach
