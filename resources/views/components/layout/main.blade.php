@@ -3,6 +3,7 @@
 
 @php
     $basePath = config('database-gui.base_path', 'db');
+    $appRoute = config('database-gui.app_path_prefix', '/');
     $homeRoute = route("$basePath.home");
     $sqlRoute = route("$basePath.sql");
 @endphp
@@ -28,7 +29,7 @@
     <div class="flex p-6 lg:p-8 items-center lg:justify-center  w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0 gap-4 lg:flex-row flex-col">
         {{-- List of database tables for current connection --}}
         <div class="flex flex-col sticky top-6 self-start h-full border-r border-[#e3e3e0] dark:border-[#3E3E3A] pr-4">
-            <a href="{{ $homeRoute }}" class="hover:text-blue-600 hover:underline dark:text-gray-400">{{ '<-' }}</a>
+            <a href="{{ $appRoute }}" class="hover:text-blue-600 hover:underline dark:text-gray-400">{{ '<-' }}</a>
             <hr class="my-4 border-white" />
             <div class="flex flex-col gap-y-2">
                 <a href="{{ $homeRoute }}" @class([
