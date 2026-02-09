@@ -30,7 +30,7 @@ class TableDataController
 
         $basePath = config('laravel-database-gui.base_path', 'db');
 
-        return view("database-gui::table.data.index", compact('tables', 'table', 'columns', 'rows', 'sorts', 'showSortForm'));
+        return view('database-gui::table.data.index', compact('tables', 'table', 'columns', 'rows', 'sorts', 'showSortForm'));
     }
 
     public function create(string $table)
@@ -41,7 +41,7 @@ class TableDataController
 
         $basePath = config('laravel-database-gui.base_path', 'db');
 
-        return view("database-gui::table.data.create", compact('tables', 'table', 'columns'));
+        return view('database-gui::table.data.create', compact('tables', 'table', 'columns'));
     }
 
     public function store(\Illuminate\Http\Request $request, string $table)
@@ -103,7 +103,7 @@ class TableDataController
 
         $basePath = config('laravel-database-gui.base_path', 'db');
 
-        return view("database-gui::table.data.show", compact('tables', 'table', 'row'));
+        return view('database-gui::table.data.show', compact('tables', 'table', 'row'));
     }
 
     public function edit(string $table, mixed $id)
@@ -116,7 +116,7 @@ class TableDataController
 
         $basePath = config('laravel-database-gui.base_path', 'db');
 
-        return view("database-gui::table.data.edit", compact('tables', 'table', 'columns', 'row'));
+        return view('database-gui::table.data.edit', compact('tables', 'table', 'columns', 'row'));
     }
 
     public function update(\Illuminate\Http\Request $request, string $table, mixed $id)
