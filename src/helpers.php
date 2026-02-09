@@ -3,8 +3,6 @@
 if (! function_exists('convert_sql_to_html_input_type')) {
     /**
      * Takes an SQL column type and converts it to an appropriate HTML input type.
-     * @param string $sqlType
-     * @return string
      */
     function convert_sql_to_html_input_type(string $sqlType): string
     {
