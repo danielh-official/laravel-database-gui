@@ -5,7 +5,8 @@
         "Daniel Haven",
         "laravel",
         "laravel-database-gui",
-        "database"
+        "database",
+        "dev"
     ],
     "homepage": "https://github.com/danielh-official/laravel-database-gui",
     "license": "MIT",
