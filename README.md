@@ -5,7 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/danielh-official/laravel-database-gui/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/danielh-official/laravel-database-gui/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/danielh-official/laravel-database-gui.svg?style=flat-square)](https://packagist.org/packages/danielh-official/laravel-database-gui)
 
-An in-app GUI for performing local database operations in your Laravel application. Like TablePlus, but in your app.
+An composer package that installs an in-app GUI for performing local database operations in your Laravel application. Like TablePlus, but in your app.
 
 ![](./screenshots/sample.png)
 
